@@ -223,13 +223,7 @@ inline uint32_t SpinLock::TryLockInternal(uint32_t lock_value,
   }
 
   uint32_t sched_disabled_bit = 0;
-  if ((lock_value & kSpinLockCooperative) == 0) {
-    // For non-cooperative locks we must make sure we mark ourselves as
-    // non-reschedulable before we attempt to CompareAndSwap.
-    if (base_internal::SchedulingGuard::DisableRescheduling()) {
-      sched_disabled_bit = kSpinLockDisabledScheduling;
-    }
-  }
+  
 
   if (!lockword_.compare_exchange_strong(
           lock_value,
