@@ -224,7 +224,6 @@ inline uint32_t SpinLock::TryLockInternal(uint32_t lock_value,
 
   uint32_t sched_disabled_bit = 0;
   
-
   if (!lockword_.compare_exchange_strong(
           lock_value,
           kSpinLockHeld | lock_value | wait_cycles | sched_disabled_bit,
