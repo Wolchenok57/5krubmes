@@ -793,7 +793,7 @@ static void poly3_invert_vec(struct poly3 *out, const struct poly3 *in) {
   r_a[0] = kOne;
   // f = all ones.
   memset(f_s, 0, sizeof(f_s));
-  memset(f_a, 0xff, 5 * sizeof(vec_t));
+  memset(f_a, 0xff, 5 * sizeof(f_a));
   memcpy(&f_a[5], kBottomSixtyOne, sizeof(kBottomSixtyOne));
   // g is the reversal of |in|.
   struct poly3 in_reversed;
